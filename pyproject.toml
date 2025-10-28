@@ -1,0 +1,62 @@
+[project]
+name = "vllora"
+version = "0.0.1"
+description = ""
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "opentelemetry-api>=1.18.0",
+    "opentelemetry-sdk>=1.18.0",
+    "opentelemetry-exporter-otlp>=1.18.0",
+    "litellm>=1.72.0",
+    "openai-agents (>=0.4.2,<0.5.0)",
+]
+
+
+[project.optional-dependencies]
+# Client library extras
+adk = [
+    "google-adk>=1.5.0",
+]
+openai = [
+    "openai>=2.2.0",
+    "openinference-instrumentation-openai-agents>=0.1.14",
+]
+# All dependencies
+all = [
+    "google-adk>=1.5.0",
+    "openai>=2.2.0",
+    "openinference-instrumentation-openai-agents>=0.1.14",
+    "opentelemetry-sdk>=1.38.0",   
+]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "vllora"
+version = "0.0.1"
+description = "vLLora - Observability and tracing for LLM applications"
+authors = ["Your Name <your.email@example.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "vllora"}]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.14"
+opentelemetry-api = "^1.18.0"
+opentelemetry-sdk = "^1.18.0"
+opentelemetry-exporter-otlp = "^1.18.0"
+litellm = "^1.72.0"
+
+# Optional dependencies - mark as optional
+google-adk = {version = "^1.5.0", optional = true}
+openai = {version = "^2.2.0", optional = true}
+openinference-instrumentation-openai-agents = {version = "^0.1.14", optional = true}
+
+[tool.poetry.extras]
+adk = ["google-adk"]
+openai = ["openai", "openinference-instrumentation-openai-agents"]
+all = ["google-adk", "openai", "openinference-instrumentation-openai-agents"]
