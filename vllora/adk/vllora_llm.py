@@ -40,8 +40,7 @@ class vLLoraLlm(BaseLlm):
         if api_base is None:
             api_base = os.getenv("VLLORA_API_BASE_URL")
         if api_base is None:
-            api_base = 'https://api.us-east-1.vllora.ai'
-        
+            raise ValueError("VLLORA_API_BASE_URL is not set")
         if extra_headers is None:
             extra_headers = {"Content-Type": "application/json"}
 
