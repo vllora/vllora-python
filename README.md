@@ -219,19 +219,6 @@ print(response.final_output)
 | `VLLORA_TRACING` | Enable/disable tracing | `true` |
 | `VLLORA_TRACING_EXPORTERS` | Comma-separated list of exporters | `otlp` |
 
-### Custom Configuration
-
-All `init()` functions accept optional parameters:
-
-```python
-from vllora.adk import init
-
-init(
-    collector_endpoint='https://your-collector-endpoint:4317',
-    api_key="your-api-key",
-    project_id="your-project-id"
-)
-```
 
 ## 🔬 Technical Details
 
