@@ -55,6 +55,8 @@ root_agent = Agent(
 
 ![OpenAI Agents Tracing](https://raw.githubusercontent.com/vllora/vllora-python/main/assets/traces-openai.png)
 
+When you call `vllora.openai.init()`, the OpenAI client is automatically configured to use your vLLora gateway by setting the client's `base_url` to the value of `VLLORA_API_BASE_URL`.
+
 ```bash
 pip install vllora[openai]
 ```
@@ -150,37 +152,11 @@ export VLLORA_API_BASE_URL="http://localhost:9090"
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `VLLORA_API_BASE_URL` | Your vLLora instance URL | Required |
-| `VLLORA_API_KEY` | Your vLLora API key | Optional |
+| `VLLORA_API_BASE_URL` | Your vLLora gateway URL; used by `vllora.openai.init()` to set the OpenAI client's `base_url` | Required |
+| `VLLORA_API_KEY` | Your vLLora API key. Optional for OpenAI routing (falls back to `"no_key"`), but required if your gateway enforces auth or when using `vllora.adk.vllora_llm`. | Optional |
 | `VLLORA_TRACING` | Enable/disable tracing | `true` |
 | `VLLORA_TRACING_EXPORTERS` | Comma-separated list of exporters | `otlp` |
 
-
-## 🔬 Technical Details
-
-### Session and Thread Management
-
-- **Thread ID**: Maintains consistent session identifiers across agent calls
-- **Run ID**: Unique identifier for each execution trace
-- **Invocation Tracking**: Tracks the sequence of agent invocations
-- **State Persistence**: Maintains context across callbacks and sub-agent interactions
-
-### Distributed Tracing
-
-- **OpenTelemetry Integration**: Uses OpenTelemetry for standardized tracing
-- **Attribute Propagation**: Automatically propagates vLLora-specific attributes
-- **Span Correlation**: Links related spans across different agents and frameworks
-- **Custom Exporters**: Supports multiple export formats (OTLP, Console)
-
-### Span Processing
-
-vLLora automatically processes and enriches spans with:
-
-- **Agent Names**: Extracted from span names and attributes
-- **Task Names**: Identified from LLM and tool spans
-- **Tool Names**: Captured from tool execution spans
-- **Client Information**: Tracked across all spans
-- **Thread Context**: Maintained throughout agent execution
 
 ## API Reference
 
@@ -189,7 +165,7 @@ vLLora automatically processes and enriches spans with:
 Each framework has a simple `init()` function that handles all necessary setup:
 
 - `vllora.adk.init()`: Patches Google ADK Agent class with vLLora callbacks
-- `vllora.openai.init()`: Initializes OpenAI Agents tracing
+- `vllora.openai.init()`: Initializes OpenAI Agents tracing and sets OpenAI client `base_url` from `VLLORA_API_BASE_URL`
 
 All init functions accept optional parameters for custom configuration (collector_endpoint, api_key, project_id)
 
