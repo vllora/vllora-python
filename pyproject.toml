@@ -38,8 +38,7 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry]
 name = "vllora"
 version = "0.0.1"
-description = "vLLora - Observability and tracing for LLM applications"
-authors = ["Your Name <your.email@example.com>"]
+description = "vLLora - Debug your Agents in Real Time"
 license = "MIT"
 readme = "README.md"
 packages = [{include = "vllora"}]
