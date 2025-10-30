@@ -1,4 +1,4 @@
-# vLLora - Multi-Framework AI Agent Tracing and Observability
+# vLLora — Debug your agents in real time
 
 [![PyPI version](https://badge.fury.io/py/vllora.svg)](https://badge.fury.io/py/vllora)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)

@@ -1,7 +1,7 @@
 [project]
 name = "vllora"
-version = "0.0.1"
-description = ""
+version = "0.0.2"
+description = "vLLora - Debug your agents in real time"
 license = {text = "MIT"}
 readme = "README.md"
 requires-python = ">=3.10,<3.14"
@@ -37,7 +37,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "vllora"
-version = "0.0.1"
+version = "0.0.2"
 description = "vLLora - Debug your Agents in Real Time"
 license = "MIT"
 readme = "README.md"
